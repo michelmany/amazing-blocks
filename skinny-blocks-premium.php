@@ -15,13 +15,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Include the ACF plugin.
-require_once ( plugin_dir_path( __FILE__ ) . 'includes/acf/acf.php' );
-
-// Customize the url setting to fix incorrect asset URLs.
-add_filter('acf/settings/url', 'my_acf_settings_url');
-function my_acf_settings_url( $url ) {
-    return plugin_dir_path( __FILE__ ) . 'includes/acf/acf.php';
-}
+require_once plugin_dir_path( __FILE__ ) . 'includes/acf/acf.php';
 
 
 /**
