@@ -39,6 +39,7 @@ if ( ! function_exists( 'sbp_fs' ) ) {
                 ),
                 'menu'                => array(
                     'slug'           => 'skinny-blocks',
+                    'contact'        => false,
                     'support'        => false,
                 ),
                 // Set the SDK to work in a sandbox mode (for development & testing).
