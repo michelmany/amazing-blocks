@@ -1,0 +1,15 @@
+{
+  "name": "mrkwp/skinny-blocks",
+  "description": "A beautiful collection of handy Gutenberg blocks to help you get started with the new WordPress editor.",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "MRKWP",
+      "email": "helpdesk@mrkwp.com"
+    }
+  ],
+  "require": {},
+  "require-dev": {
+    "webdevstudios/php-coding-standards": "^1.0"
+  }
+}
