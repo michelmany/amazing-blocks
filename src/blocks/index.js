@@ -1,1 +1,1 @@
-import "./block-newsletter";
+import "./block-latest-newsletter";
