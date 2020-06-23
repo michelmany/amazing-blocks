@@ -1,6 +1,6 @@
 <?php
 
-require_once plugin_dir_path( __FILE__ ) . 'acf/acf.php';
+require_once plugin_dir_path( __FILE__ ) . 'acf-pro/acf.php';
 
 add_filter( 'acf/settings/save_json', 'my_acf_json_save_point' );
 

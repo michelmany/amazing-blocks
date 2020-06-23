@@ -1,0 +1,242 @@
+{
+    "key": "group_5ef21c284e564",
+    "title": "Newsletter Settings Options",
+    "fields": [
+        {
+            "key": "field_5ef21c4352616",
+            "label": "Show in search",
+            "name": "newsletter_show_in_search",
+            "type": "true_false",
+            "instructions": "Do you want the pages for this specific post type to appear in search?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5ef21ec8388da",
+            "label": "Show page",
+            "name": "newsletter_show_page",
+            "type": "true_false",
+            "instructions": "Do the newsletters have an archive page with Gutenberg editor? If yes make sure the Gutenberg editor can be used for a layout setting on the specific page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5ef21f0499504",
+            "label": "Show archive",
+            "name": "newsletter_show_archive",
+            "type": "true_false",
+            "instructions": "Do we have an archive for the post type?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5ef21f3d99505",
+            "label": "Archive Posts Quantity",
+            "name": "newsletter_how_many_posts",
+            "type": "range",
+            "instructions": "How many posts do you want on your archive page?",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ef21f0499504",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 1,
+            "max": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5ef2205f4de54",
+            "label": "Item link",
+            "name": "newsletter_item_link",
+            "type": "button_group",
+            "instructions": "Do you want your link to take you to the Item (newsletter) or the Item Page?",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ef21f0499504",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "item": "Item (Newsletter)",
+                "item_page": "Item Page"
+            },
+            "allow_null": 0,
+            "default_value": "item",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_5ef2219bdaf11",
+            "label": "Alternate name",
+            "name": "newsletter_alternate_name_check",
+            "type": "true_false",
+            "instructions": "Would you like to name your newsletters something else?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5ef221f3daf12",
+            "label": "Enter the alternative name",
+            "name": "newsletter_the_alternative_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ef2219bdaf11",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5ef2225415fc0",
+            "label": "Permalinks - What URL name would you like for your Post Type?",
+            "name": "newsletter_permalinks",
+            "type": "text",
+            "instructions": "After updating the permalink, make sure that you flush the rewrite rules by visiting Settings > Permalinks and clicking Update. Otherwise, you'll still see the old links.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "newsletters",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5ef222d715fc1",
+            "label": "Would you like Newsletter Categories?",
+            "name": "newsletter_categories",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5ef2232015fc2",
+            "label": "Would you like Newsletter Tags?",
+            "name": "newsletter_tags",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1592930267
+}
