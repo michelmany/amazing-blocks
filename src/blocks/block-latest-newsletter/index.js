@@ -7,16 +7,15 @@ import save from "./save";
 import { __ } from "@wordpress/i18n";
 import { registerBlockType } from "@wordpress/blocks";
 
-registerBlockType("skinny-blocks/latest-newsletter", {
-	title: __("Newsletter", "skinny-blocks"),
+registerBlockType("skinny-blocks/latest-newsletters", {
+	title: __("Latest Newsletters", "skinny-blocks"),
 	icon: "edit",
 	category: "common",
-	keywords: [__("Newsletter", "skinny-blocks")],
+	keywords: [__("Newsletter", "skinny-blocks", "Latest")],
 	attributes: {
-		content: {
+		posts: {
 			type: "array",
-			source: "children",
-			selector: "p"
+			default: []
 		}
 	},
 	edit,

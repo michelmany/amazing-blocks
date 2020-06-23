@@ -11,7 +11,6 @@ function create_newsletter_cpt() {
 	$cpt_name            = $has_alternate_name && ! empty( $alternate_name ) ? $alternate_name : 'Newsletters';
 	$custom_permalink    = ! empty( get_field( 'newsletter_permalinks', 'option' ) ) ? get_field( 'newsletter_permalinks', 'option' ) : 'newsletters';
 
-
 	$labels = array(
 		'name'                  => $cpt_name,
 		'menu_name'             => $cpt_name,
@@ -58,7 +57,7 @@ function create_newsletter_cpt() {
 		'has_archive'         => $show_archive,
 		'hierarchical'        => false,
 		'exclude_from_search' => $exclude_from_search,
-		'show_in_rest'        => $show_page,
+		'show_in_rest'        => true,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
 		'rewrite'             => array(
@@ -72,8 +71,8 @@ function create_newsletter_cpt() {
 }
 add_action( 'init', 'create_newsletter_cpt', 20 );
 
-$has_categories      = get_field( 'newsletter_categories', 'option' );
-$has_tags            = get_field( 'newsletter_tags', 'option' );
+$has_categories = get_field( 'newsletter_categories', 'option' );
+$has_tags       = get_field( 'newsletter_tags', 'option' );
 
 function create_newsletter_category() {
 	register_taxonomy(
