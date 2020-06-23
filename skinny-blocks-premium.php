@@ -59,6 +59,9 @@ if ( ! function_exists( 'sbp_fs' ) ) {
 // Include the ACF plugin.
 require_once plugin_dir_path( __FILE__ ) . 'includes/acf/acf.php';
 
+// Include the ACF plugin.
+require_once plugin_dir_path( __FILE__ ) . 'newsletters/newsletters.php';
+
 
 /**
  * TODO:
