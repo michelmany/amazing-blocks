@@ -18,11 +18,17 @@ defined( 'ABSPATH' ) || exit;
 if ( ! function_exists( 'sbp_fs' ) ) {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/freemius.php';
 }
-// Include the ACF plugin.
-require_once plugin_dir_path( __FILE__ ) . 'includes/acf.php';
 
-// Include Post Types.
-require_once plugin_dir_path( __FILE__ ) . 'post-types/register-post-types.php';
+// This IF block will be auto removed from the Free version.
+if ( sbp_fs()->is__premium_only() ) {
+
+	if ( sbp_fs()->can_use_premium_code() ) {
+		// Include Post Types.
+		require_once plugin_dir_path( __FILE__ ) . 'post-types/register-post-types.php';
+		// Include the ACF setup.
+		require_once plugin_dir_path( __FILE__ ) . 'includes/acf.php';
+	}
+}
 
 
 /**
