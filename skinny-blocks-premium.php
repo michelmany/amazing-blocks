@@ -19,7 +19,7 @@ if ( ! function_exists( 'sbp_fs' ) ) {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/freemius.php';
 }
 // Include the ACF plugin.
-require_once plugin_dir_path( __FILE__ ) . 'includes/acf/acf.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/acf.php';
 
 // Include Post Types.
 require_once plugin_dir_path( __FILE__ ) . 'post-types/register-post-types.php';
