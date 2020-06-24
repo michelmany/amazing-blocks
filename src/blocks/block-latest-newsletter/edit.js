@@ -45,23 +45,33 @@ const Edit = props => {
 							</a>
 						);
 					} else {
-						button = <a href={newsletter.link}>Download</a>;
+						button = <a href={newsletter.acf.link.url}>Download</a>;
 					}
 
 					return (
 						<div className={`${className}__item`}>
-							<h4 style={{ display: "inline-block" }}>
-								{newsletter.title.rendered}
-							</h4>
-							<div>{button}</div>
+							<div className={`${className}__item-image`}>
+								{newsletter.acf.newsletter_image && (
+									<img
+										src={newsletter.acf.newsletter_image.sizes.medium_large}
+									/>
+								)}
+							</div>
 
-							{newsletter.acf.contents.length && (
-								<ol>
-									{newsletter.acf.contents.map(content => (
-										<li>{content.item}</li>
-									))}
-								</ol>
-							)}
+							<div className={`${className}__item-content`}>
+								<h4 className={`${className}__item-title`}>
+									{newsletter.title.rendered}
+								</h4>
+								<div>{button}</div>
+
+								{newsletter.acf.contents.length && (
+									<ol>
+										{newsletter.acf.contents.map(content => (
+											<li>{content.item}</li>
+										))}
+									</ol>
+								)}
+							</div>
 						</div>
 					);
 				})}
