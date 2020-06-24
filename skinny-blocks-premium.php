@@ -103,7 +103,11 @@ function register_block() {
 		);
 	}
 }
-add_action( 'init', __NAMESPACE__ . '\register_block' );
+
+//Check if premium before loading hook for register block
+if ( sbp_fs()->is__premium_only() ) {
+    add_action('init', __NAMESPACE__ . '\register_block');
+}
 
 
 /**
