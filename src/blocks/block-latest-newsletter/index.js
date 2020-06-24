@@ -16,6 +16,10 @@ registerBlockType("skinny-blocks/latest-newsletters", {
 		posts: {
 			type: "array",
 			default: []
+		},
+		settings: {
+			type: "array",
+			default: []
 		}
 	},
 	edit,

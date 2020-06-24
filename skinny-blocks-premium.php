@@ -104,13 +104,12 @@ function register_block() {
 	}
 }
 
-//Check if premium before loading hook for register block
+// Check if premium before loading hook for register block
 if ( sbp_fs()->is__premium_only() ) {
-    add_action('init', __NAMESPACE__ . '\register_block');
+	add_action( 'init', __NAMESPACE__ . '\register_block' );
 }
 
 $show_page = get_field( 'newsletter_show_page', 'option' );
-
 
 if ( ! $show_page ) {
 

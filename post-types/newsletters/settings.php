@@ -32,6 +32,7 @@ function sb_custom_route_acf_newsletter_options() {
 	$newsletter_options = array();
 	$newsletter_options['settings']['newsletter_how_many_posts'] = get_field( 'newsletter_how_many_posts', 'options' );
 	$newsletter_options['settings']['newsletter_item_link']      = get_field( 'newsletter_item_link', 'options' );
+	$newsletter_options['settings']['newsletter_add_image']      = get_field( 'newsletter_add_image', 'options' );
 	return $newsletter_options;
 }
 

@@ -1,31 +1,35 @@
 /**
  * EDIT: Newsletter Block.
  */
-import { RichText } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 const { Fragment, useState, useEffect } = wp.element;
 
 const Edit = props => {
-	const {
-		attributes: { content },
-		className,
-		setAttributes
-	} = props;
-
+	const { className, setAttributes } = props;
 	const [posts, setPosts] = useState([]);
+	const [settings, setSettings] = useState([]);
 
 	const fetchPosts = () => {
 		wp.apiFetch({
 			url: `/wp-json/wp/v2/sb-newsletter`
 		}).then(response => {
-			console.log(response);
 			setPosts(response);
 			setAttributes({ posts: response });
 		});
 	};
 
+	const fetchSettings = () => {
+		wp.apiFetch({
+			url: `/wp-json/sb/v1/acf/newsletter-options`
+		}).then(response => {
+			setSettings(response);
+			setAttributes({ settings: response });
+		});
+	};
+
 	useEffect(() => {
 		fetchPosts();
+		fetchSettings();
 	}, []);
 
 	// Update field content on change.
@@ -50,13 +54,15 @@ const Edit = props => {
 
 					return (
 						<div className={`${className}__item`}>
-							<div className={`${className}__item-image`}>
-								{newsletter.acf.newsletter_image && (
-									<img
-										src={newsletter.acf.newsletter_image.sizes.medium_large}
-									/>
-								)}
-							</div>
+							{settings.settings && settings.settings.newsletter_add_image && (
+								<div className={`${className}__item-image`}>
+									{newsletter.acf.newsletter_image && (
+										<img
+											src={newsletter.acf.newsletter_image.sizes.medium_large}
+										/>
+									)}
+								</div>
+							)}
 
 							<div className={`${className}__item-content`}>
 								<h4 className={`${className}__item-title`}>
@@ -76,13 +82,6 @@ const Edit = props => {
 					);
 				})}
 			</div>
-			{/* <RichText
-				tagName="p"
-				className={className}
-				onChange={onChangeContent}
-				value={content}
-				placeholder={__("Newsletter Block....", "skinny-blocks")}
-			/> */}
 		</Fragment>
 	);
 };

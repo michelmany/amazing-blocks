@@ -6,13 +6,11 @@ const { getBlockDefaultClassName } = wp.blocks;
 
 const Save = props => {
 	const {
-		attributes: { posts }
+		attributes: { posts, settings }
 	} = props;
 	const className = getBlockDefaultClassName(
 		"skinny-blocks/latest-newsletters"
 	);
-
-	console.log(className);
 
 	return (
 		<div className={className}>
@@ -30,11 +28,15 @@ const Save = props => {
 
 				return (
 					<div className={`${className}__item`}>
-						<div className={`${className}__item-image`}>
-							{newsletter.acf.newsletter_image && (
-								<img src={newsletter.acf.newsletter_image.sizes.medium_large} />
-							)}
-						</div>
+						{settings.settings && settings.settings.newsletter_add_image && (
+							<div className={`${className}__item-image`}>
+								{newsletter.acf.newsletter_image && (
+									<img
+										src={newsletter.acf.newsletter_image.sizes.medium_large}
+									/>
+								)}
+							</div>
+						)}
 
 						<div className={`${className}__item-content`}>
 							<h4 className={`${className}__item-title`}>
