@@ -48,3 +48,11 @@ add_action(
 		);
 	}
 );
+
+/*
+	==========================================
+	 Rest Api Custom Endpoints Newsletter Options
+	==========================================
+ */
+
+// get_field( 'newsletter_how_many_posts', 'options' );

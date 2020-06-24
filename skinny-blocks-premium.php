@@ -109,6 +109,37 @@ if ( sbp_fs()->is__premium_only() ) {
     add_action('init', __NAMESPACE__ . '\register_block');
 }
 
+$show_page = get_field( 'newsletter_show_page', 'option' );
+
+
+if ( ! $show_page ) {
+
+	function redirect_cpt_singular_posts() {
+		if ( is_singular( 'sb-newsletter' ) ) {
+			wp_safe_redirect( home_url(), 302 );
+			exit;
+		}
+	}
+	add_action( 'template_redirect', 'redirect_cpt_singular_posts' );
+
+	function sb_allowed_block_types( $allowed_blocks ) {
+
+		$allowed_blocks = array(
+		// 'core/image',
+		// 'core/paragraph',
+		// 'core/heading',
+		// 'core/list',
+		);
+
+		if ( 'post' !== $post->post_type && 'page' !== $post->post_type ) {
+			$allowed_blocks = array();
+		}
+
+		return $allowed_blocks;
+	}
+	add_filter( 'allowed_block_types', 'sb_allowed_block_types', 10, 2 );
+
+}
 
 /**
  * TODO:

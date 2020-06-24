@@ -3,25 +3,6 @@
     "title": "Newsletter Options",
     "fields": [
         {
-            "key": "field_5ef1fffa44af3",
-            "label": "Add Image?",
-            "name": "add_image",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
             "key": "field_5ef2002644af4",
             "label": "Image",
             "name": "newsletter_image",
@@ -178,7 +159,7 @@
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
+    "position": "side",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
@@ -187,5 +168,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1592937505
+    "modified": 1593012040
 }

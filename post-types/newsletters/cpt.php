@@ -45,8 +45,6 @@ function create_newsletter_cpt() {
 		'description'         => __( 'Newsletters', 'sb-newsletter' ),
 		'labels'              => $labels,
 		'menu_icon'           => 'dashicons-feedback',
-		'supports'            => array(),
-		'taxonomies'          => array(),
 		'public'              => true,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
@@ -65,14 +63,15 @@ function create_newsletter_cpt() {
 			'with_front' => false,
 		),
 		'taxonomies'          => array( 'categories', 'tags' ),
+		'template'            => array( array( 'core/quote', array( 'className' => 'is-style-large' ) ) ),
 	);
 	register_post_type( 'sb-newsletter', $args );
 
 }
 add_action( 'init', 'create_newsletter_cpt', 20 );
 
-$has_categories = get_field( 'newsletter_categories', 'option' );
-$has_tags       = get_field( 'newsletter_tags', 'option' );
+$enable_categories = get_field( 'newsletter_categories', 'option' );
+$enable_tags       = get_field( 'newsletter_tags', 'option' );
 
 function create_newsletter_category() {
 	register_taxonomy(
@@ -98,11 +97,11 @@ function create_newsletter_tag() {
 	);
 }
 
-if ( $has_categories ) {
+if ( $enable_categories ) {
 	add_action( 'init', 'create_newsletter_category' );
 }
 
-if ( $has_tags ) {
+if ( $enable_tags ) {
 	add_action( 'init', 'create_newsletter_tag' );
 }
 
