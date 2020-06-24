@@ -1,13 +1,18 @@
 /**
  * SAVE: Latest Newsletter Block
  */
-import { RichText } from "@wordpress/block-editor";
+const { getBlockDefaultClassName } = wp.blocks;
+// const { RichText } = wp.blockEditor;
 
 const Save = props => {
 	const {
-		attributes: { posts },
-		className
+		attributes: { posts }
 	} = props;
+	const className = getBlockDefaultClassName(
+		"skinny-blocks/latest-newsletters"
+	);
+
+	console.log(className);
 
 	return (
 		<div className={className}>
