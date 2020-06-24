@@ -51,11 +51,38 @@ add_action(
 
 /*
 	==========================================
-	 Rest Api Custom Endpoints Newsletter Options
+	 Show a field depending on the option value
 	==========================================
  */
 
-// get_field( 'newsletter_how_many_posts', 'options' );
+add_filter( 'acf/location/rule_types', 'acf_location_rules_types' );
+
+function acf_location_rules_types( $choices ) {
+	$choices['Forms']['newsletter_settings'] = 'Newsletter - Add Image';
+	return $choices;
+}
+
+add_filter( 'acf/location/rule_values/newsletter_settings', 'acf_location_rule_values_newsletter_settings' );
+
+function acf_location_rule_values_newsletter_settings( $choices ) {
+	$choices['Yes'] = 1;
+	$choices['No'] = 0;
+	return $choices;
+}
+
+add_filter( 'acf/location/rule_match/newsletter_settings', 'acf_location_rule_match_newsletter_settings', 10, 4 );
+function acf_location_rule_match_newsletter_settings( $match, $rule, $options, $field_group ) {
+	$value = get_field( 'newsletter_add_image', 'option' );
+	$selected_value = (int) $rule['value'];
+
+	if ( $rule['operator'] == '==' ) {
+		$match = ( $value == $selected_value );
+	} elseif ( $rule['operator'] == '!=' ) {
+		$match = ( $value != $selected_value );
+	}
+
+	return $match;
+}
 
 /*
 	==========================================
