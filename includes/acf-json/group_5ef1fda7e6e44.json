@@ -1,6 +1,6 @@
 {
     "key": "group_5ef1fda7e6e44",
-    "title": "Newsletter Options",
+    "title": "Newsletter Post Options",
     "fields": [
         {
             "key": "field_5ef200a65230b",
@@ -136,5 +136,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1593035128
+    "modified": 1593035855
 }
