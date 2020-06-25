@@ -143,13 +143,29 @@ if ( ! $show_page ) {
 
 		return $allowed_blocks;
 	}
-	add_filter( 'allowed_block_types', 'sb_allowed_block_types', 10, 2 );
 
+	add_filter( 'allowed_block_types', 'sb_allowed_block_types', 10, 2 );
 }
 
 /**
- * TODO:
- * Create Dependency Check
- * Create a class-skinny-blocks for this plugin.
-*/
+ * Checks if the Skinny Blocks plugin is activated
+ *
+ * If the Skinny Blocks plugin is not active, then don't allow the
+ * activation of this plugin.
+ *
+ * @since 1.0.0
+ */
+function check_plugin_dependencies() {
+	if ( is_admin() ) {
+		include_once ABSPATH . '/wp-admin/includes/plugin.php';
+
+		if ( ! is_plugin_active( 'skinny-blocks/skinny-blocks.php' ) ) {
+			$error_message = '<p style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Roboto,Oxygen-Sans,Ubuntu,Cantarell,\'Helvetica Neue\',sans-serif;font-size: 13px;line-height: 1.5;color:#444;">' . esc_html__( 'This plugin requires ', 'skinny-blocks-premium' ) . '<a href="' . esc_url( 'https://wordpress.org/plugins/skinny-blocks/' ) . '" target="_blank">Skinny Blocks</a>' . esc_html__( ' plugin to be active.', 'skinny-blocks-premium' ) . '</p>';
+
+			die( $error_message );
+		}
+	}
+
+}
+register_activation_hook( __FILE__, 'check_plugin_dependencies' );
 
