@@ -14,6 +14,9 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
+// ACF Admin
+define( 'ACF_SHOW_ADMIN', true );
+
 // Include Freemius.
 if ( ! function_exists( 'sbp_fs' ) ) {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/freemius.php';
@@ -34,7 +37,6 @@ if ( sbp_fs()->is__premium_only() ) {
 		require_once plugin_dir_path( __FILE__ ) . 'post-types/register-post-types.php';
 	}
 }
-
 
 /**
  * Register the block with WordPress.
