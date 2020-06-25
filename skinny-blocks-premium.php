@@ -23,8 +23,13 @@ if ( ! function_exists( 'sbp_fs' ) ) {
 if ( sbp_fs()->is__premium_only() ) {
 
 	if ( sbp_fs()->can_use_premium_code() ) {
-		// Include the ACF setup.
-		require_once plugin_dir_path( __FILE__ ) . 'includes/acf.php';
+
+		// The class for integrating ACF.
+		if ( ! class_exists( 'SB_ACF_Integrate ' ) ) {
+			require_once plugin_dir_path( __FILE__ ) . 'includes/class-sb_acf_integrate.php';
+			new SB_ACF_Integrate( 'Skinny Blocks Premium', '0.1.0' );
+		}
+
 		// Include Post Types.
 		require_once plugin_dir_path( __FILE__ ) . 'post-types/register-post-types.php';
 	}
