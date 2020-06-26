@@ -49,20 +49,3 @@ add_action(
 		);
 	}
 );
-
-/*
-	==========================================
-	 Limit quantity posts on Archive Page
-	==========================================
- */
-
-$posts_per_page = get_field( 'people_listing_how_many_posts', 'options' );
-
-function sb_people_listing_query( $query ) {
-	if ( ! is_admin()
-			&& $query->is_post_type_archive( 'sb-people-listing' )
-			&& $query->is_main_query() ) {
-					$query->set( 'posts_per_page', $posts_per_page );
-	}
-}
-add_action( 'pre_get_posts', 'sb_people_listing_query' );

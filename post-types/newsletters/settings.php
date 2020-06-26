@@ -1,5 +1,11 @@
 <?php
 
+/*
+==========================================
+	Add Settings Options Page
+==========================================
+*/
+
 if ( function_exists( 'acf_add_options_page' ) ) {
 	acf_add_options_sub_page(
 		array(
@@ -11,10 +17,10 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 }
 
 /*
-	==========================================
-	 JSON API to show Advanced Custom Fields
-	==========================================
- */
+==========================================
+	JSON API to show Advanced Custom Fields
+==========================================
+*/
 add_filter(
 	'rest_prepare_sb-newsletter',
 	function( $response ) {
@@ -24,10 +30,10 @@ add_filter(
 );
 
 /*
-	==========================================
-	 Rest Api Custom Endpoints Newsletter Options
-	==========================================
- */
+==========================================
+	Rest Api Custom Endpoints Newsletter Options
+==========================================
+*/
 function sb_custom_route_acf_newsletter_options() {
 	$newsletter_options = array();
 	$newsletter_options['settings']['newsletter_how_many_posts'] = get_field( 'newsletter_how_many_posts', 'options' );
@@ -51,10 +57,10 @@ add_action(
 );
 
 /*
-	==========================================
-	 Show a field depending on the option value
-	==========================================
- */
+==========================================
+	Show a field depending on the option value
+==========================================
+*/
 
 add_filter( 'acf/location/rule_types', 'acf_location_rules_types' );
 
@@ -67,13 +73,13 @@ add_filter( 'acf/location/rule_values/newsletter_settings', 'acf_location_rule_v
 
 function acf_location_rule_values_newsletter_settings( $choices ) {
 	$choices['Yes'] = 1;
-	$choices['No'] = 0;
+	$choices['No']  = 0;
 	return $choices;
 }
 
 add_filter( 'acf/location/rule_match/newsletter_settings', 'acf_location_rule_match_newsletter_settings', 10, 4 );
 function acf_location_rule_match_newsletter_settings( $match, $rule, $options, $field_group ) {
-	$value = get_field( 'newsletter_add_image', 'option' );
+	$value          = get_field( 'newsletter_add_image', 'option' );
 	$selected_value = (int) $rule['value'];
 
 	if ( $rule['operator'] == '==' ) {
@@ -85,11 +91,33 @@ function acf_location_rule_match_newsletter_settings( $match, $rule, $options, $
 	return $match;
 }
 
+
 /*
-	==========================================
-	 Limit quantity posts on Archive Page
-	==========================================
- */
+==========================================
+	Creating Custom Newsletter Archive Page
+==========================================
+*/
+
+add_filter( 'template_include', 'newsletter_archive_template' );
+
+function newsletter_archive_template( $template ) {
+	if ( is_post_type_archive( 'sb-newsletter' ) ) {
+		$theme_files     = array( 'archive-sb-newsletter.php', 'skinny-blocks-premium/archive-sb-newsletter.php' );
+		$exists_in_theme = locate_template( $theme_files, false );
+		if ( $exists_in_theme != '' ) {
+			return $exists_in_theme;
+		}
+		return plugin_dir_path( __FILE__ ) . 'archive-sb-newsletter.php';
+	}
+	return $template;
+}
+
+
+/*
+==========================================
+	Limit quantity posts on Archive Page
+==========================================
+*/
 
 $posts_per_page = get_field( 'newsletter_how_many_posts', 'options' );
 
@@ -101,3 +129,32 @@ function sb_newsletters_query( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'sb_newsletters_query' );
+
+/*
+==========================================
+	"Show Page" field config (disable blocks and redirect single page to)
+==========================================
+*/
+
+$newsletter_show_page = get_field( 'newsletter_show_page', 'option' );
+
+if ( ! $newsletter_show_page ) {
+
+	function redirect_cpt_singular_posts() {
+		if ( is_singular( 'sb-newsletter' ) ) {
+			wp_safe_redirect( get_post_type_archive_link( 'sb-newsletter' ), 302 );
+			exit;
+		}
+	}
+	add_action( 'template_redirect', 'redirect_cpt_singular_posts' );
+
+	function sb_allowed_block_types( $allowed_blocks ) {
+		if ( 'post' !== $post->post_type && 'page' !== $post->post_type ) {
+			$allowed_blocks = array();
+		}
+
+		return $allowed_blocks;
+	}
+
+	add_filter( 'allowed_block_types', 'sb_allowed_block_types', 10, 2 );
+}
