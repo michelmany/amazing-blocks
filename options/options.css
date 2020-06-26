@@ -1,0 +1,27 @@
+.settings-header {
+	height: 150px;
+	background: #fff;
+	display: flex;
+	align-items: center;
+	margin-bottom: 50px;
+}
+
+.settings-header__logo {
+	width: 100px;
+	max-width: 100%;
+	background: #fff;
+	position: relative;
+	left: 20px;
+}
+
+.skinny-blocks_page_skinny-blocks-account .settings-header {
+	width: calc(100% + 20px);
+	position: relative;
+	left: -20px;
+	right: -20px;
+}
+
+.skinny-blocks_page_skinny-blocks-premium-settings #wpcontent,
+.skinny-blocks_page_skinny-blocks-premium-branding #wpcontent {
+	padding-left: 0;
+}

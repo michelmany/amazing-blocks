@@ -184,6 +184,7 @@
 
     $is_premium = $fs->is_premium();
 ?>
+	<?php do_action( 'sbp_fs_header' ); ?>
 	<div class="wrap fs-section">
 		<?php if ( ! $has_tabs && ! $fs->apply_filters( 'hide_account_tabs', false ) ) : ?>
 		<h2 class="nav-tab-wrapper">

@@ -83,6 +83,9 @@ require_once plugin_dir_path( __FILE__ ) . 'post-types/register-post-types.php';
 // Register blocks.
 require_once plugin_dir_path( __FILE__ ) . 'register-blocks.php';
 
+// Register blocks.
+require_once plugin_dir_path( __FILE__ ) . 'options/options.php';
+
 
 
 
