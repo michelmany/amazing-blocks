@@ -148,9 +148,9 @@ if ( ! $newsletter_show_page ) {
 	}
 	add_action( 'template_redirect', 'redirect_cpt_singular_posts' );
 
-	function sb_allowed_block_types( $allowed_blocks ) {
-		if ( 'post' !== $post->post_type && 'page' !== $post->post_type ) {
-			$allowed_blocks = array();
+	function sb_allowed_block_types( $allowed_blocks, $post ) {
+		if ( 'sb-newsletter' === $post->post_type ) {
+			return $allowed_blocks = array();
 		}
 
 		return $allowed_blocks;

@@ -63,7 +63,6 @@ function create_newsletter_cpt() {
 			'with_front' => false,
 		),
 		'taxonomies'          => array( 'categories', 'tags' ),
-		'template'            => array( array( 'core/quote', array( 'className' => 'is-style-large' ) ) ),
 	);
 	register_post_type( 'sb-newsletter', $args );
 

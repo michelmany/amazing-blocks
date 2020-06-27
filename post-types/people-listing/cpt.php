@@ -67,3 +67,38 @@ function create_people_listing_cpt() {
 
 }
 add_action( 'init', 'create_people_listing_cpt', 20 );
+
+$enable_categories = get_field( 'people_listing_categories', 'option' );
+$enable_tags       = get_field( 'people_listing_tags', 'option' );
+
+function create_people_listing_category() {
+	register_taxonomy(
+		'category',
+		'sb-people-listing',
+		array(
+			'label'        => __( 'Categories' ),
+			'rewrite'      => array( 'slug' => 'people-listing-category' ),
+			'hierarchical' => true,
+		)
+	);
+}
+
+function create_people_listing_tag() {
+	register_taxonomy(
+		'tag',
+		'sb-people-listing',
+		array(
+			'label'        => __( 'Tags' ),
+			'rewrite'      => array( 'slug' => 'people-listing-tag' ),
+			'hierarchical' => false,
+		)
+	);
+}
+
+if ( $enable_categories ) {
+	add_action( 'init', 'create_people_listing_category' );
+}
+
+if ( $enable_tags ) {
+	add_action( 'init', 'create_people_listing_tag' );
+}

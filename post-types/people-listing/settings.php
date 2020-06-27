@@ -5,6 +5,7 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 		array(
 			'page_title'  => 'People Listing Settings',
 			'menu_title'  => 'Settings',
+			'menu_slug'   => 'people-listing-settings',
 			'parent_slug' => 'edit.php?post_type=sb-people-listing',
 		)
 	);
@@ -49,3 +50,15 @@ add_action(
 		);
 	}
 );
+
+
+
+function sb_people_listing_allowed_block_types( $allowed_blocks, $post ) {
+	if ( 'sb-people-listing' === $post->post_type ) {
+		return $allowed_blocks = array();
+	}
+
+	return $allowed_blocks;
+}
+
+add_filter( 'allowed_block_types', 'sb_people_listing_allowed_block_types', 10, 2 );

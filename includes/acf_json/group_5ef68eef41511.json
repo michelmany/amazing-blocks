@@ -1,0 +1,165 @@
+{
+    "key": "group_5ef68eef41511",
+    "title": "People Listing Settings Options",
+    "fields": [
+        {
+            "key": "field_5ef68eef46ab1",
+            "label": "Show in search",
+            "name": "people_listing_show_in_search",
+            "type": "true_false",
+            "instructions": "Do you want the pages for this specific post type to appear in search?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5ef68eef46aba",
+            "label": "Show page",
+            "name": "people_listing_show_page",
+            "type": "true_false",
+            "instructions": "Do the newsletters have an archive page with Gutenberg editor? If yes make sure the Gutenberg editor can be used for a layout setting on the specific page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5ef68eef46add",
+            "label": "Alternate name",
+            "name": "people_listing_alternate_name_check",
+            "type": "true_false",
+            "instructions": "Would you like to name your newsletters something else?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5ef68eef46ae4",
+            "label": "Enter the alternative name",
+            "name": "people_listing_the_alternative_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ef68eef46add",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5ef68eef46b0c",
+            "label": "Permalinks - What URL name would you like for your Post Type?",
+            "name": "people_listing_permalinks",
+            "type": "text",
+            "instructions": "After updating the permalink, make sure that you flush the rewrite rules by visiting <a href=\"\/wp-admin\/options-permalink.php\">Permalinks Settings<\/a>. Click Save Changes.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "newsletters",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5ef68eef46b14",
+            "label": "Would you like Newsletter Categories?",
+            "name": "people_listing_categories",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5ef68eef46b3c",
+            "label": "Would you like Newsletter Tags?",
+            "name": "people_listing_tags",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "people-listing-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1593217165
+}

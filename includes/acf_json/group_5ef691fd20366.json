@@ -1,0 +1,69 @@
+{
+    "key": "group_5ef691fd20366",
+    "title": "People Listing Post Options",
+    "fields": [
+        {
+            "key": "field_5ef6921a6027d",
+            "label": "Image",
+            "name": "people_listing_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5ef6925d6027f",
+            "label": "Title",
+            "name": "people_listing_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "sb-people-listing"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1593219801
+}
