@@ -76,13 +76,17 @@ function register_block() {
 		$pdf_file         = get_field( 'pdf_file', $newsletters[0]->ID );
 		$link             = get_field( 'link', $newsletters[0]->ID );
 
-		$btn_link = $newsletter_type === 'pdf' ? $pdf_file['url'] : $$link['url'];
+		$btn_link = 'pdf' === $newsletter_type ? $pdf_file['url'] : $$link['url'];
 
-		$output  = '';
-		$output .= '<div class="wp-block-skinny-blocks-latest-newsletter__item">';
-		$output .= '<div class="wp-block-skinny-blocks-latest-newsletter__item-image">';
-		$output .= '<img src="' . $newsletter_image['sizes']['medium_large'] . '">';
-		$output .= '</div>';
+		$output = '';
+
+		if ( $add_image ) :
+			$output .= '<div class="wp-block-skinny-blocks-latest-newsletter__item">';
+			$output .= '<div class="wp-block-skinny-blocks-latest-newsletter__item-image">';
+			$output .= '<img src="' . $newsletter_image['sizes']['medium_large'] . '">';
+			$output .= '</div>';
+		endif;
+
 		$output .= '<div class="wp-block-skinny-blocks-latest-newsletter__item-content">';
 		$output .= '<div>' . $content . '</div>';
 		$output .= '<a href="' . $btn_link . '" class="btn btn--primary">' . $attributes['btnLabel'] . '</a>';
