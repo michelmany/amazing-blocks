@@ -2,29 +2,28 @@
  * SAVE: Latest Newsletter Block
  */
 const { getBlockDefaultClassName } = wp.blocks;
-// const { RichText } = wp.blockEditor;
+const { InnerBlocks, PlainText } = wp.blockEditor;
 
 const Save = props => {
 	const {
-		attributes: { posts, settings }
+		attributes: { newsletters, settings, btnLabel }
 	} = props;
-	const className = getBlockDefaultClassName(
-		"skinny-blocks/latest-newsletters"
-	);
+	const className = getBlockDefaultClassName("skinny-blocks/latest-newsletter");
 
 	return (
 		<div className={className}>
-			{posts.map(newsletter => {
-				let button;
-				if (newsletter.acf.newsletter_type === "pdf") {
-					button = (
-						<a href={newsletter.acf.pdf_file.url} download>
-							Download PDF
+			{newsletters.map(newsletter => {
+				const DownloadButton = () => {
+					const btn_link =
+						newsletter.acf.newsletter_type === "pdf"
+							? newsletter.acf.pdf_file.url
+							: newsletter.acf.link.url;
+					return (
+						<a href={btn_link} className="btn btn--primary">
+							<PlainText.Content tag="p" value={btnLabel} />
 						</a>
 					);
-				} else {
-					button = <a href={newsletter.acf.link.url}>Download</a>;
-				}
+				};
 
 				return (
 					<div className={`${className}__item`}>
@@ -39,18 +38,8 @@ const Save = props => {
 						)}
 
 						<div className={`${className}__item-content`}>
-							<h4 className={`${className}__item-title`}>
-								{newsletter.title.rendered}
-							</h4>
-							<div>{button}</div>
-
-							{newsletter.acf.contents.length && (
-								<ol>
-									{newsletter.acf.contents.map(content => (
-										<li>{content.item}</li>
-									))}
-								</ol>
-							)}
+							<InnerBlocks.Content />
+							<DownloadButton />
 						</div>
 					</div>
 				);

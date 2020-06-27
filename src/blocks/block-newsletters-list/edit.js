@@ -3,26 +3,18 @@
  */
 import { __ } from "@wordpress/i18n";
 const { Fragment, useState, useEffect } = wp.element;
-const { Button } = wp.components;
-const { InnerBlocks, RichText } = wp.blockEditor;
 
 const Edit = props => {
-	const { className, setAttributes, attributes } = props;
-	const [newsletters, setNewsletters] = useState([]);
+	const { className, setAttributes } = props;
+	const [posts, setPosts] = useState([]);
 	const [settings, setSettings] = useState([]);
 
-	const allowedBlocks = ["core/paragraph", "core/heading"];
-	const template = [
-		["core/heading", { placeholder: "Enter title..." }],
-		["core/paragraph", { placeholder: "Enter side content..." }]
-	];
-
-	const fetchLatestNewsletter = () => {
+	const fetchPosts = () => {
 		wp.apiFetch({
-			url: `/wp-json/wp/v2/sb-newsletter?per_page=1`
+			url: `/wp-json/wp/v2/sb-newsletter`
 		}).then(response => {
-			setNewsletters(response);
-			setAttributes({ newsletters: response });
+			setPosts(response);
+			setAttributes({ posts: response });
 		});
 	};
 
@@ -36,7 +28,7 @@ const Edit = props => {
 	};
 
 	useEffect(() => {
-		fetchLatestNewsletter();
+		fetchPosts();
 		fetchSettings();
 	}, []);
 
@@ -48,7 +40,18 @@ const Edit = props => {
 	return (
 		<Fragment>
 			<div className={className}>
-				{newsletters.map(newsletter => {
+				{posts.map(newsletter => {
+					let button;
+					if (newsletter.acf.newsletter_type === "pdf") {
+						button = (
+							<a href={newsletter.acf.pdf_file.url} download>
+								Download PDF
+							</a>
+						);
+					} else {
+						button = <a href={newsletter.acf.link.url}>Download</a>;
+					}
+
 					return (
 						<div className={`${className}__item`}>
 							{settings.settings && settings.settings.newsletter_add_image && (
@@ -62,16 +65,18 @@ const Edit = props => {
 							)}
 
 							<div className={`${className}__item-content`}>
-								<InnerBlocks
-									allowedBlocks={allowedBlocks}
-									template={template}
-								/>
-								<div className="btn btn--primary">
-									<RichText
-										value={attributes.btnLabel}
-										onChange={btnLabel => setAttributes({ btnLabel })}
-									/>
-								</div>
+								<h4 className={`${className}__item-title`}>
+									{newsletter.title.rendered}
+								</h4>
+								<div>{button}</div>
+
+								{newsletter.acf.contents.length && (
+									<ol>
+										{newsletter.acf.contents.map(content => (
+											<li>{content.item}</li>
+										))}
+									</ol>
+								)}
 							</div>
 						</div>
 					);
