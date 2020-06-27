@@ -61,18 +61,6 @@ if ( ! class_exists( 'SB_ACF_Integrate ' ) ) :
 			$this->acf_url  = plugin_dir_url( __FILE__ ) . 'acf/';
 			$this->acf_json = plugin_dir_path( __FILE__ ) . 'acf_json/';
 
-			/*
-			 * TODO
-			 * Remove all this. NEVER do a chmod 777
-			 */
-			if ( is_dir( $this->acf_json ) ) {
-				if ( ! is_writable( $this->acf_json ) ) {
-					chmod( $this->acf_json, '777' );
-				}
-			} else {
-				mkdir( $this->acf_json, 0777, true );
-			}
-
 			if ( class_exists( 'acf' ) ) {
 				self::$acf_modus = 'installed';
 			} elseif ( file_exists( $this->acf_dir . 'acf.php' ) ) {
