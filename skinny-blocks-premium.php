@@ -27,6 +27,21 @@ register_activation_hook( __FILE__, 'check_plugin_dependencies' );
 function skinny_blocks_loader() {
 
 	if ( ! is_parent_activated() ) {
+		if ( is_admin() ) {
+			deactivate_plugins( plugin_basename( __FILE__ ) );
+
+			add_action(
+				'admin_notices',
+				function() {
+					?>
+				<div class="notice notice-error is-dismissible">
+						<p><?php _e( 'Skinny Blocks Premium requires Skinny Blocks Plugin to be installed and activated.', 'skinny-blocks-premium' ); ?></p>
+				</div>
+					<?php
+				}
+			);
+		}
+
 		return;
 	}
 
