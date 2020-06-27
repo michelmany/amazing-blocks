@@ -78,10 +78,9 @@ function register_block() {
 
 		$btn_link = 'pdf' === $newsletter_type ? $pdf_file['url'] : $$link['url'];
 
-		$output = '';
+		$output = '<div class="wp-block-skinny-blocks-latest-newsletter__item">';
 
 		if ( $add_image ) :
-			$output .= '<div class="wp-block-skinny-blocks-latest-newsletter__item">';
 			$output .= '<div class="wp-block-skinny-blocks-latest-newsletter__item-image">';
 			$output .= '<img src="' . $newsletter_image['sizes']['medium_large'] . '">';
 			$output .= '</div>';
@@ -91,6 +90,7 @@ function register_block() {
 		$output .= '<div>' . $content . '</div>';
 		$output .= '<a href="' . $btn_link . '" class="btn btn--primary">' . $attributes['btnLabel'] . '</a>';
 		$output .= '</div>';
+
 		$output .= '</div>';
 
 		return $output;
