@@ -7,7 +7,7 @@
             "label": "Show in search",
             "name": "people_listing_show_in_search",
             "type": "true_false",
-            "instructions": "Do you want the pages for this specific post type to appear in search?",
+            "instructions": "Do you want the People Items to appear in search?",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -26,7 +26,7 @@
             "label": "Show page",
             "name": "people_listing_show_page",
             "type": "true_false",
-            "instructions": "Do the newsletters have an archive page with Gutenberg editor? If yes make sure the Gutenberg editor can be used for a layout setting on the specific page.",
+            "instructions": "Do you want to enable the People archive page?",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -45,7 +45,7 @@
             "label": "Alternate name",
             "name": "people_listing_alternate_name_check",
             "type": "true_false",
-            "instructions": "Would you like to name your newsletters something else?",
+            "instructions": "Would you like to name your People post type something else?",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -88,7 +88,7 @@
         },
         {
             "key": "field_5ef68eef46b0c",
-            "label": "Permalinks - What URL name would you like for your Post Type?",
+            "label": "Permalinks - What URL name would you like for your People Post Type?",
             "name": "people_listing_permalinks",
             "type": "text",
             "instructions": "After updating the permalink, make sure that you flush the rewrite rules by visiting <a href=\"\/wp-admin\/options-permalink.php\">Permalinks Settings<\/a>. Click Save Changes.",
@@ -100,7 +100,7 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "newsletters",
+            "placeholder": "people",
             "prepend": "",
             "append": "",
             "maxlength": ""
