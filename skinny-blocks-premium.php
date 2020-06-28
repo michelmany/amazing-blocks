@@ -44,8 +44,6 @@ function skinny_blocks_loader() {
 
 		return;
 	}
-
-	init_freemius();
 }
 
 add_action( 'plugins_loaded', 'skinny_blocks_loader' );
@@ -80,6 +78,7 @@ function check_plugin_dependencies() {
 	}
 }
 
+
 /**
  * Init Freemius
  */
@@ -89,17 +88,31 @@ function init_freemius() {
 	}
 }
 
-// The class for integrating ACF.
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-sb_acf_integrate.php';
+init_freemius();
 
-// Include Post Types.
-require_once plugin_dir_path( __FILE__ ) . 'post-types/register-post-types.php';
+if ( sbp_fs()->is__premium_only() ) {
+	if ( sbp_fs()->can_use_premium_code() ) {
 
-// Register blocks.
-require_once plugin_dir_path( __FILE__ ) . 'register-blocks.php';
+		// The class for integrating ACF.
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-sb_acf_integrate.php';
 
-// Register blocks.
+		// Include Post Types.
+		require_once plugin_dir_path( __FILE__ ) . 'post-types/register-post-types.php';
+
+		// Register blocks.
+		require_once plugin_dir_path( __FILE__ ) . 'register-blocks.php';
+
+	}
+}
+
+// Include Options.
 require_once plugin_dir_path( __FILE__ ) . 'options/options.php';
+
+
+
+
+
+
 
 
 
