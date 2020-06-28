@@ -1,17 +1,13 @@
-.settings-header {
-	height: 150px;
-	background: #fff;
-	display: flex;
-	align-items: center;
-	margin-bottom: 50px;
+/* .wrap {
+	padding-left: 20px;
+	padding-right: 20px;
+} */
+
+.sbp-options-page {
 }
 
-.settings-header__logo {
-	width: 100px;
-	max-width: 100%;
-	background: #fff;
-	position: relative;
-	left: 20px;
+.sbp-options-page__title {
+	font-size: 2rem;
 }
 
 .skinny-blocks_page_skinny-blocks-account .settings-header {
@@ -21,7 +17,7 @@
 	right: -20px;
 }
 
-.skinny-blocks_page_skinny-blocks-premium-settings #wpcontent,
-.skinny-blocks_page_skinny-blocks-premium-branding #wpcontent {
-	padding-left: 0;
+.skinny-blocks_page_skinny-blocks-premium-settings .wrap,
+.skinny-blocks_page_skinny-blocks-premium-branding .wrap {
+	padding-left: 20px;
 }

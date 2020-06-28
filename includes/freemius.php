@@ -24,9 +24,12 @@ function sbp_fs() {
 					'is_require_payment' => false,
 				),
 				'menu'             => array(
-					'slug'    => 'skinny-blocks',
+					'slug'    => 'skinny-blocks-premium-settings',
 					'contact' => false,
 					'support' => false,
+					'parent'  => array(
+						'slug' => 'skinny-blocks',
+					),
 				),
 				// Set the SDK to work in a sandbox mode (for development & testing).
 				// IMPORTANT: MAKE SURE TO REMOVE SECRET KEY BEFORE DEPLOYMENT.

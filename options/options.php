@@ -19,62 +19,26 @@ add_action( 'admin_enqueue_scripts', 'skinny_blocks_premium_load_admin_scripts' 
 */
 
 function skinny_blocks_premium_getting_started_menu() {
-	add_submenu_page(
-		'skinny-blocks',
-		'Settings Page',
-		esc_html__( 'Settings', 'skinny-blocks' ),
-		'manage_options',
-		'skinny-blocks-premium-settings',
-		'skinny_blocks_premium_render_settings_page'
-	);
 
 	add_submenu_page(
 		'skinny-blocks',
-		'Branding Page',
-		esc_html__( 'Branding', 'skinny-blocks' ),
+		'Premium Settings',
+		esc_html__( 'Premium Settings', 'skinny-blocks-premium' ),
 		'manage_options',
-		'skinny-blocks-premium-branding',
-		'skinny_blocks_premium_render_branding_page'
+		'skinny-blocks-premium-settings',
+		'skinny_blocks_premium_render_premium_settings'
 	);
 }
 add_action( 'admin_menu', 'skinny_blocks_premium_getting_started_menu', 101 );
 
 
 /**
- * Renders the plugin settings page.
+ * Renders the premium settings.
  */
-function skinny_blocks_premium_settings_header() {
-	?>
-	<div class="settings-header">
-		<img
-			src="<?php echo plugin_dir_url( __FILE__ ) . 'images/skinny-blocks-logo.png'; ?>"
-			class="settings-header__logo">
-	</div>
-	<?php
-}
-
-add_action( 'sbp_fs_header', 'skinny_blocks_premium_settings_header' );
-add_action( 'sbp_settings_header', 'skinny_blocks_premium_settings_header' );
-
-
-
-/**
- * Renders the plugin settings page.
- */
-function skinny_blocks_premium_render_settings_page() {
+function skinny_blocks_premium_render_premium_settings() {
 
 	$pages_dir = trailingslashit( dirname( __FILE__ ) ) . 'pages/';
 
-	include $pages_dir . 'settings.php';
-}
-
-/**
- * Renders the plugin branding page.
- */
-function skinny_blocks_premium_render_branding_page() {
-
-	$pages_dir = trailingslashit( dirname( __FILE__ ) ) . 'pages/';
-
-	include $pages_dir . 'branding-page.php';
+	include $pages_dir . 'premium-settings.php';
 }
 
