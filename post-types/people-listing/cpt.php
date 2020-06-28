@@ -65,6 +65,10 @@ function create_people_listing_cpt() {
 	);
 	register_post_type( 'sb-people-listing', $args );
 
+	if ( (bool) get_option( 'flush_rewrite_rules' ) ) {
+		flush_rewrite_rules();
+		update_option( 'flush_rewrite_rules', 'false' );
+	}
 }
 add_action( 'init', 'create_people_listing_cpt', 20 );
 

@@ -62,3 +62,26 @@ function sb_people_listing_allowed_block_types( $allowed_blocks, $post ) {
 }
 
 add_filter( 'allowed_block_types', 'sb_people_listing_allowed_block_types', 10, 2 );
+
+
+/**
+ * When updating permalink field, refresh the rewrite rules
+ */
+function people_listing_permalinks_flush_rewrite_rules( $value, $page, $field ) {
+	if ( 'options' !== $page ) {
+		return;
+	}
+
+	if ( 'people_listing_permalinks' === $field['name'] ) {
+		$old_value = get_field( 'people_listing_permalinks', $page );
+
+		$new_value = $_POST['acf'][ $field['key'] ];
+
+		if ( $old_value !== $new_value ) {
+			update_option( 'flush_rewrite_rules', 'true' );
+		}
+	}
+
+	return $value;
+}
+add_filter( 'acf/update_value', 'people_listing_permalinks_flush_rewrite_rules', 10, 3 );

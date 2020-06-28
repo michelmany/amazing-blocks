@@ -158,3 +158,27 @@ if ( ! $newsletter_show_page ) {
 
 	add_filter( 'allowed_block_types', 'sb_allowed_block_types', 10, 2 );
 }
+
+/**
+ * When updating permalink field, refresh the rewrite rules
+ */
+function newsletter_permalinks_flush_rewrite_rules( $value, $page, $field ) {
+	if ( 'options' !== $page ) {
+		return;
+	}
+
+	if ( 'newsletter_permalinks' === $field['name'] ) {
+		$old_value = get_field( 'newsletter_permalinks', $page );
+
+		$new_value = $_POST['acf'][ $field['key'] ];
+
+		if ( $old_value !== $new_value ) {
+			update_option( 'flush_rewrite_rules', 'true' );
+		}
+	}
+
+	return $value;
+}
+add_filter( 'acf/update_value', 'newsletter_permalinks_flush_rewrite_rules', 10, 3 );
+
+

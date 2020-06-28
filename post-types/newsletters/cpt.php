@@ -66,6 +66,10 @@ function create_newsletter_cpt() {
 	);
 	register_post_type( 'sb-newsletter', $args );
 
+	if ( (bool) get_option( 'flush_rewrite_rules' ) ) {
+		flush_rewrite_rules();
+		update_option( 'flush_rewrite_rules', 'false' );
+	}
 }
 add_action( 'init', 'create_newsletter_cpt', 20 );
 
