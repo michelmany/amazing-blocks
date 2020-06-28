@@ -1,13 +1,23 @@
-/* .wrap {
-	padding-left: 20px;
-	padding-right: 20px;
-} */
-
 .sbp-options-page {
 }
 
-.sbp-options-page__title {
-	font-size: 2rem;
+.sbp-options-page-grid {
+	display: flex;
+	margin-top: 25px;
+}
+
+.sbp-options-page-grid__item {
+	min-width: 150px;
+	background: #fff;
+	margin-right: 25px;
+	padding: 30px;
+	-webkit-box-shadow: 1px 1px 4px -1px rgba(50, 50, 50, 0.4);
+	-moz-box-shadow: 1px 1px 4px -1px rgba(50, 50, 50, 0.4);
+	box-shadow: 1px 1px 4px -1px rgba(50, 50, 50, 0.4);
+}
+
+.sbp-options-page-grid__item h3 {
+	margin-top: 0;
 }
 
 .skinny-blocks_page_skinny-blocks-account .settings-header {
@@ -15,6 +25,10 @@
 	position: relative;
 	left: -20px;
 	right: -20px;
+}
+
+.skinny-blocks_page_skinny-blocks-premium-settings #wpcontent {
+	padding-left: 0;
 }
 
 .skinny-blocks_page_skinny-blocks-premium-settings .wrap,

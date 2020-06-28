@@ -71,7 +71,10 @@ function create_newsletter_cpt() {
 		update_option( 'flush_rewrite_rules', 'false' );
 	}
 }
-add_action( 'init', 'create_newsletter_cpt', 20 );
+
+if ( (bool) get_option( 'show_newsletter_cpt_accordion' ) ) {
+	add_action( 'init', 'create_newsletter_cpt', 20 );
+}
 
 $enable_categories = get_field( 'newsletter_categories', 'option' );
 $enable_tags       = get_field( 'newsletter_tags', 'option' );

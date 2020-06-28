@@ -70,7 +70,10 @@ function create_people_listing_cpt() {
 		update_option( 'flush_rewrite_rules', 'false' );
 	}
 }
-add_action( 'init', 'create_people_listing_cpt', 20 );
+
+if ( (bool) get_option( 'show_people_listing_cpt_accordion' ) ) {
+	add_action( 'init', 'create_people_listing_cpt', 20 );
+}
 
 $enable_categories = get_field( 'people_listing_categories', 'option' );
 $enable_tags       = get_field( 'people_listing_tags', 'option' );
