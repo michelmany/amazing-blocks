@@ -64,7 +64,7 @@
             "label": "Show archive",
             "name": "newsletter_show_archive",
             "type": "true_false",
-            "instructions": "Do we have an archive for the post type?\r\n\r\nAfter updating this option, make sure that you flush the rewrite rules by visiting <a href=\"\/wp-admin\/options-permalink.php\">Permalinks Settings<\/a>. Click Save Changes.",
+            "instructions": "Do we have an archive for the post type?",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -83,7 +83,7 @@
             "label": "Archive Posts Quantity",
             "name": "newsletter_how_many_posts",
             "type": "range",
-            "instructions": "How many posts do you want on your newsletter archive page?",
+            "instructions": "How many posts do you want on your Newsletter archive page?",
             "required": 0,
             "conditional_logic": [
                 [
@@ -187,7 +187,7 @@
             "label": "Permalinks - What URL name would you like for your Post Type?",
             "name": "newsletter_permalinks",
             "type": "text",
-            "instructions": "After updating the permalink, make sure that you flush the rewrite rules by visiting <a href=\"\/wp-admin\/options-permalink.php\">Permalinks Settings<\/a>. Click Save Changes.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -257,5 +257,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1593036166
+    "modified": 1593355616
 }
