@@ -2,8 +2,8 @@
  * EDIT: Newsletter Block.
  */
 const { __ } = wp.i18n;
-const { Fragment, useState, useEffect, createRef } = wp.element;
-const { InnerBlocks, RichText } = wp.blockEditor;
+const { Fragment, useState, useEffect } = wp.element;
+const { InnerBlocks } = wp.blockEditor;
 const { select, dispatch } = wp.data;
 
 const Edit = props => {
@@ -86,9 +86,21 @@ const Edit = props => {
 						<InnerBlocks
 							allowedBlocks={allowedBlocks}
 							template={[
-								["core/heading", { placeholder: "Enter title..." }],
-								["core/paragraph", { placeholder: "Enter side content..." }],
-								["core/button", { placeholder: "Button label", align: "left" }]
+								[
+									"core/heading",
+									{ placeholder: __("Enter title...", "skinny-blocks") }
+								],
+								[
+									"core/paragraph",
+									{ placeholder: __("Enter side content...", "skinny-blocks") }
+								],
+								[
+									"core/button",
+									{
+										placeholder: __("Button label", "skinny-blocks"),
+										align: "left"
+									}
+								]
 							]}
 							templateLock={true}
 						/>
