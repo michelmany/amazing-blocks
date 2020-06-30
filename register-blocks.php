@@ -51,48 +51,19 @@ function register_block() {
 		);
 	}
 
-	// Register block with WordPress.
-	register_block_type(
-		'skinny-blocks/latest-newsletter',
-		array(
-			'editor_script'   => 'skinny-blocks-premium-editor-script',
-			'editor_style'    => 'skinny-blocks-premium-editor-style',
-			'style'           => 'skinny-blocks-premium-style',
-			'render_callback' => 'render_latest_newsletter_block',
-		)
-	);
-
-	function render_latest_newsletter_block( $attributes, $content ) {
-		$newsletters = get_posts(
-			array(
-				'post_type'   => 'sb-newsletter',
-				'numberposts' => 1,
+	function sbp_register_dynamic_block( $block, $options = array() ) {
+		register_block_type(
+			'skinny-blocks/' . $block,
+			array_merge(
+				array(
+					'editor_script'   => 'skinny-blocks-premium-editor-script',
+					'editor_style'    => 'skinny-blocks-premium-editor-style',
+					'style'           => 'skinny-blocks-premium-style',
+					'render_callback' => 'render_latest_newsletter_block',
+				),
+				$options
 			)
 		);
-
-		$add_image        = get_field( 'newsletter_add_image', 'option' );
-		$newsletter_image = get_field( 'newsletter_image', $newsletters[0]->ID );
-		$newsletter_type  = get_field( 'newsletter_type', $newsletters[0]->ID );
-		$pdf_file         = get_field( 'pdf_file', $newsletters[0]->ID );
-		$link             = get_field( 'link', $newsletters[0]->ID );
-
-		$btn_link = 'pdf' === $newsletter_type ? $pdf_file['url'] : $$link['url'];
-
-		$output = '<div class="wp-block-skinny-blocks-latest-newsletter__item">';
-
-		if ( $add_image ) :
-			$output .= '<div class="wp-block-skinny-blocks-latest-newsletter__item-image">';
-			$output .= '<img src="' . $newsletter_image['sizes']['medium_large'] . '">';
-			$output .= '</div>';
-		endif;
-
-		$output .= '<div class="wp-block-skinny-blocks-latest-newsletter__item-content">';
-		$output .= '<div>' . $content . '</div>';
-		$output .= '</div>';
-
-		$output .= '</div>';
-
-		return $output;
 	}
 
 	// Register frontend script.
@@ -104,6 +75,15 @@ function register_block() {
 			$asset_file['version'],
 			true
 		);
+	}
+
+	$blocks = array(
+		'block-latest-newsletter',
+		'block-newsletters',
+	);
+
+	foreach ( $blocks as $block ) {
+		require plugin_dir_path( __FILE__ ) . 'src/blocks/' . $block . '/block.php';
 	}
 }
 

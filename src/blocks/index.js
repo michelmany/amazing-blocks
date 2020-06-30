@@ -1,2 +1,2 @@
 import "./block-latest-newsletter";
-// import "./block-button";
+import "./block-newsletters";

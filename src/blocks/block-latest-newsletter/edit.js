@@ -42,11 +42,8 @@ const Edit = props => {
 			block => block.name === "core/button"
 		);
 
-		console.log(settings);
-		console.log(newsletter);
-
 		let btn_link =
-			settings.settings.newsletter_item_link == "item_page"
+			settings.settings.newsletter_item_link === "item_page"
 				? newsletter.link
 				: newsletter.acf.newsletter_type === "pdf"
 				? newsletter.acf.pdf_file.url
