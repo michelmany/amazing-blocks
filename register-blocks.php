@@ -88,7 +88,6 @@ function register_block() {
 
 		$output .= '<div class="wp-block-skinny-blocks-latest-newsletter__item-content">';
 		$output .= '<div>' . $content . '</div>';
-		$output .= '<a href="' . $btn_link . '" class="btn btn--primary">' . $attributes['btnLabel'] . '</a>';
 		$output .= '</div>';
 
 		$output .= '</div>';

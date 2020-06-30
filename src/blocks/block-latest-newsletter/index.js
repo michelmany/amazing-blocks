@@ -2,11 +2,10 @@
  * REGISTER: Newsletter Block.
  */
 import edit from "./edit";
-import save from "./save";
-const { InnerBlocks } = wp.blockEditor;
 
-import { __ } from "@wordpress/i18n";
-import { registerBlockType } from "@wordpress/blocks";
+const { InnerBlocks } = wp.blockEditor;
+const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks;
 
 registerBlockType("skinny-blocks/latest-newsletter", {
 	title: __("Latest Newsletter", "skinny-blocks"),
@@ -14,17 +13,13 @@ registerBlockType("skinny-blocks/latest-newsletter", {
 	category: "common",
 	keywords: [__("Latest Newsletter", "Newsletter", "Latest")],
 	attributes: {
-		newsletters: {
+		latestNewsletters: {
 			type: "array",
 			default: []
 		},
 		settings: {
 			type: "array",
 			default: []
-		},
-		btnLabel: {
-			type: "string",
-			default: "Download"
 		}
 	},
 
