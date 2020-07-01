@@ -1,9 +1,9 @@
 {
-    "key": "group_5ef1fda7e6e44",
+    "key": "group_5efcf1baa2428",
     "title": "Newsletter Post Options",
     "fields": [
         {
-            "key": "field_5ef200a65230b",
+            "key": "field_5efcf1baa6af1",
             "label": "Type",
             "name": "newsletter_type",
             "type": "radio",
@@ -27,7 +27,7 @@
             "save_other_choice": 0
         },
         {
-            "key": "field_5ef20b2f7a4ff",
+            "key": "field_5efcf1baa6afa",
             "label": "PDF File",
             "name": "pdf_file",
             "type": "file",
@@ -36,7 +36,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_5ef200a65230b",
+                        "field": "field_5efcf1baa6af1",
                         "operator": "==",
                         "value": "pdf"
                     }
@@ -54,7 +54,7 @@
             "mime_types": ".pdf"
         },
         {
-            "key": "field_5ef20bc3a9c73",
+            "key": "field_5efcf1baa6b05",
             "label": "Link",
             "name": "link",
             "type": "link",
@@ -63,7 +63,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_5ef200a65230b",
+                        "field": "field_5efcf1baa6af1",
                         "operator": "==",
                         "value": "link"
                     }
@@ -77,7 +77,7 @@
             "return_format": "array"
         },
         {
-            "key": "field_5ef20c1956280",
+            "key": "field_5efcf1baa6b0c",
             "label": "Contents",
             "name": "contents",
             "type": "repeater",
@@ -96,7 +96,7 @@
             "button_label": "Add item",
             "sub_fields": [
                 {
-                    "key": "field_5ef20c2856281",
+                    "key": "field_5efcf1bab1702",
                     "label": "Item",
                     "name": "item",
                     "type": "text",
@@ -136,5 +136,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1593035855
+    "modified": 1593640807
 }

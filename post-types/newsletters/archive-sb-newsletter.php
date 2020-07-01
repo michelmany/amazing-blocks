@@ -17,14 +17,14 @@ get_header();
 				$newsletter_type      = get_field( 'newsletter_type', $post->ID );
 				$pdf_file             = get_field( 'pdf_file', $post->ID );
 				$link_url             = get_field( 'link', $post->ID );
-				$download_link        = $newsletter_type === 'pdf' ? $pdf_file['url'] : $link_url['url'];
+				$download_link        = $newsletter_type === 'pdf' ? ( $pdf_file ? $pdf_file['url'] : null ) : ( $link_url ? $link_url['url'] : null );
 				$link                 = $newsletter_item_link === 'item_page' ? get_permalink() : $download_link;
 			?>
 
 		<h4>
 			<a
 					href="<?php echo $link; ?>"
-					target="_blank"
+					<?php if ($newsletter_type === 'pdf') echo 'download'; ?>
 					title="Permanent Link to <?php the_title_attribute(); ?>">
 					<?php the_title(); ?>
 				</a>

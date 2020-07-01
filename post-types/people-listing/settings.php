@@ -68,10 +68,6 @@ add_filter( 'allowed_block_types', 'sb_people_listing_allowed_block_types', 10, 
  * When updating permalink field, refresh the rewrite rules
  */
 function people_listing_permalinks_flush_rewrite_rules( $value, $page, $field ) {
-	if ( 'options' !== $page ) {
-		return;
-	}
-
 	if ( 'people_listing_permalinks' === $field['name'] ) {
 		$old_value = get_field( 'people_listing_permalinks', $page );
 
