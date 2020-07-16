@@ -62,48 +62,51 @@ const Edit = props => {
 
 	return (
 		<Fragment>
-			<div className={className}>
-				<div className={`${className}__item`}>
-					{loading
-						? "Loading..."
-						: settings.settings &&
-						  settings.settings.newsletter_add_image && (
-								<div className={`${className}__item-image`}>
-									{latestNewsletter.acf.newsletter_image && (
-										<img
-											src={
-												latestNewsletter.acf.newsletter_image.sizes.medium_large
-											}
-										/>
-									)}
-								</div>
-						  )}
+			{loading ? (
+				"Loading..."
+			) : (
+				<div className={className}>
+					<div className={`${className}__item`}>
+						{settings.settings && settings.settings.newsletter_add_image && (
+							<div className={`${className}__item-image`}>
+								{latestNewsletter.acf.newsletter_image && (
+									<img
+										src={
+											latestNewsletter.acf.newsletter_image.sizes.medium_large
+										}
+									/>
+								)}
+							</div>
+						)}
 
-					<div className={`${className}__item-content`}>
-						<InnerBlocks
-							allowedBlocks={allowedBlocks}
-							template={[
-								[
-									"core/heading",
-									{ placeholder: __("Enter title...", "skinny-blocks") }
-								],
-								[
-									"core/paragraph",
-									{ placeholder: __("Enter side content...", "skinny-blocks") }
-								],
-								[
-									"core/button",
-									{
-										placeholder: __("Button label", "skinny-blocks"),
-										align: "left"
-									}
-								]
-							]}
-							templateLock={true}
-						/>
+						<div className={`${className}__item-content`}>
+							<InnerBlocks
+								allowedBlocks={allowedBlocks}
+								template={[
+									[
+										"core/heading",
+										{ placeholder: __("Enter title...", "skinny-blocks") }
+									],
+									[
+										"core/paragraph",
+										{
+											placeholder: __("Enter side content...", "skinny-blocks")
+										}
+									],
+									[
+										"core/button",
+										{
+											placeholder: __("Button label", "skinny-blocks"),
+											align: "left"
+										}
+									]
+								]}
+								templateLock={true}
+							/>
+						</div>
 					</div>
 				</div>
-			</div>
+			)}
 		</Fragment>
 	);
 };

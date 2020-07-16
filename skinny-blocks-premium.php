@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Skinny Blocks Premium
  * Description:     Premium Gutenberg blocks.
- * Version:         0.1.1
+ * Version:         0.1.2
  * Author:          MRKWP
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -16,8 +16,8 @@ defined( 'ABSPATH' ) || exit;
 
 // Define conts.
 define( 'PLUGIN_NAME', 'Skinny Blocks Premium' );
-define( 'PLUGIN_VERSION', '0.1.1' );
-define( 'ACF_SHOW_ADMIN', true );
+define( 'PLUGIN_VERSION', '0.1.2' );
+define( 'ACF_SHOW_ADMIN', false );
 
 register_activation_hook( __FILE__, 'check_plugin_dependencies' );
 
