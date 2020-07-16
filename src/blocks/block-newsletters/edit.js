@@ -16,6 +16,7 @@ const Edit = props => {
 		}).then(response => {
 			setPosts(response);
 			setAttributes({ posts: response });
+			setLoading(false);
 		});
 	};
 
@@ -25,12 +26,13 @@ const Edit = props => {
 		}).then(response => {
 			setSettings(response);
 			setAttributes({ settings: response });
+			fetchPosts();
 		});
 	};
 
 	useEffect(() => {
-		fetchPosts();
 		fetchSettings();
+		setLoading(true);
 	}, []);
 
 	return (
